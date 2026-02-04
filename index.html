@@ -9,39 +9,28 @@
         :root { --primary-color: #1a1a1a; --accent-color: #c5a059; --bg-color: #ffffff; --subtle-gray: #555; --line-color: #d1d1d1; }
         * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
         body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Lato', sans-serif; color: #222; }
-
         .page-container { width: 210mm; margin: 0 auto; }
-
         .page {
             width: 210mm; height: 297mm; background: var(--bg-color); padding: 20mm;
             position: relative; display: flex; flex-direction: column;
             page-break-after: always; page-break-inside: avoid; overflow: hidden;
         }
-
         .page:last-of-type { page-break-after: auto; margin-bottom: 0; }
-
         header { border-bottom: 1px solid #e0e0e0; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: baseline; }
         h1 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        
         .intro-full-text { column-count: 2; column-gap: 35px; text-align: justify; font-size: 0.95rem; line-height: 1.7; margin-bottom: 25px; }
-
         .image-frame { width: 100%; height: 500px; background-color: #f9f9f9; border: 1px solid #f0f0f0; overflow: hidden; margin-bottom: 20px; }
         .image-frame img { width: 100%; height: 100%; object-fit: cover; }
-
         .analysis-square { border-left: 3px solid var(--line-color); padding: 15px 25px; font-size: 1rem; line-height: 1.6; font-style: italic; background: #fafafa; }
-
         footer { margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.8rem; color: #999; }
         footer a { text-decoration: none; color: var(--subtle-gray); font-weight: bold; border-bottom: 1px solid transparent; transition: all 0.3s; }
         footer a:hover { color: #000; border-bottom: 1px solid #999; }
-        
         .page-number { position: absolute; bottom: 10mm; right: 15mm; font-size: 0.75rem; color: #999; font-weight: bold; }
-
         #print-btn { 
             display: block; width: 250px; margin: 40px auto; padding: 15px;
             background: #fff; color: #000; border: 1px solid #000;
             cursor: pointer; font-weight: bold; text-transform: uppercase; text-align: center;
         }
-
         @media print { 
             body { background: none; }
             .page-container { width: 100%; }
@@ -59,7 +48,7 @@
             <p><strong>El Espectáculo como Dictadura Visual:</strong> Guy Debord nos advierte que el espectáculo no es solo un conjunto de imágenes, sino una estructura social que nos separa de la vida real. Hemos pasado del "ser" al "parecer", donde la mediación técnica sustituye la experiencia humana auténtica por una contemplación pasiva.</p>
             <p><strong>La Ciudad y la Alienación:</strong> El urbanismo está diseñado para dirigir nuestros deseos hacia el consumo. La Sociedad Errante propone romper estos raíles invisibles mediante la deriva, recuperando el espacio público como un territorio de aventura psicogeográfica.</p>
         </div>
-        <div class="image-frame" style="height: 340px;"><img src="PORTADA.jpg"></div>
+        <div class="image-frame" style="height: 340px;"><img src="portada.jpg"></div>
         <footer>
             <div><a href="https://wa.me/34654391870" target="_blank">WhatsApp: +34 654 391 870</a></div>
             <div><a href="mailto:dremeseiro@gmail.com">dremeseiro@gmail.com</a></div>
@@ -67,75 +56,49 @@
         <span class="page-number">00</span>
     </div>
 
-    <div class="page"><header><h1>Fragmento 01</h1></header><div class="image-frame"><img src="image1.jpg"></div><div class="analysis-square">La ciudad moderna funciona como un mecanismo de aislamiento. El individuo se disuelve en el flujo del espectáculo urbano.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">01</span></div>
-
-    <div class="page"><header><h1>Fragmento 02</h1></header><div class="image-frame"><img src="image2.jpg"></div><div class="analysis-square">El objeto ya no satisface una necesidad real, sino que proyecta un estatus simbólico. El espectáculo es el dinero que se contempla.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">02</span></div>
-
-    <div class="page"><header><h1>Fragmento 03</h1></header><div class="image-frame"><img src="image3.jpg"></div><div class="analysis-square">Las calles están diseñadas para la circulación fluida de mercancías, no para el encuentro humano espontáneo ni para la deriva poética.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">03</span></div>
-
-    <div class="page"><header><h1>Fragmento 04</h1></header><div class="image-frame"><img src="image15.jpg"></div><div class="analysis-square">El espectáculo coloniza nuestro descanso, convirtiendo el tiempo libre en otra forma de consumo pasivo.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">04</span></div>
-
-    <div class="page"><header><h1>Fragmento 05</h1></header><div class="image-frame"><img src="image5.jpg"></div><div class="analysis-square">Bajo la luz cegadora del espectáculo, la identidad real se borra para dar paso a la máscara social requerida.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">05</span></div>
-
-    <div class="page"><header><h1>Fragmento 06</h1></header><div class="image-frame"><img src="image6.jpg"></div><div class="analysis-square">La ciudad nos vigila a través de su propia estética, dictando lo que es aceptable, bello y útil.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">06</span></div>
-
-    <div class="page"><header><h1>Fragmento 07</h1></header><div class="image-frame"><img src="image7.jpg"></div><div class="analysis-square">Détournement: La reutilización de elementos del sistema para crear un nuevo significado subversivo.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">07</span></div>
-
-    <div class="page"><header><h1>Fragmento 08</h1></header><div class="image-frame"><img src="image8.jpg"></div><div class="analysis-square">El espectáculo une a los hombres solo en su separación, manteniéndolos aislados frente a la misma representación.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">08</span></div>
-
-    <div class="page"><header><h1>Fragmento 09</h1></header><div class="image-frame"><img src="image9.jpg"></div><div class="analysis-square">Dictadura Visual: Lo que aparece es bueno; lo que es bueno aparece. La imagen es la única realidad válida.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">09</span></div>
-
-    <div class="page"><header><h1>Fragmento 10</h1></header><div class="image-frame"><img src="image10.jpg"></div><div class="analysis-square">Nostalgia Fabricada: El sistema nos vende un pasado simplificado para evitar comprender el tiempo histórico real.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">10</span></div>
-
-    <div class="page"><header><h1>Fragmento 11</h1></header><div class="image-frame"><img src="IMAGE11.jpg"></div><div class="analysis-square">Grietas en el Muro: La deriva busca los espacios residuales donde la vida todavía puede respirar sin un guion.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">11</span></div>
-
-    <div class="page"><header><h1>Fragmento 12</h1></header><div class="image-frame"><img src="image12.jpg"></div><div class="analysis-square">Turismo Existencial: Viajar para ver lo que ya hemos consumido en pantallas. La validación de un catálogo previo.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">12</span></div>
-
-    <div class="page"><header><h1>Fragmento 13</h1></header><div class="image-frame"><img src="image13.jpg"></div><div class="analysis-square">Resistencia al Ruido: En un mundo saturado, el silencio y la imagen vacía son los únicos actos de rebelión posibles.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">13</span></div>
-
-    <div class="page"><header><h1>Fragmento 14</h1></header><div class="image-frame"><img src="image14.jpg"></div><div class="analysis-square">Deseos Implantados: El espectáculo nos enseña a querer aquello que el sistema necesita que consumamos.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">14</span></div>
-
-    <div class="page"><header><h1>Fragmento 15</h1></header><div class="image-frame"><img src="IMAGE15.jpg"></div><div class="analysis-square">Ritmo Mecánico: El reloj del espectáculo anula la subjetividad y los ritmos biológicos de la errancia humana.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">15</span></div>
-
-    <div class="page"><header><h1>Fragmento 16</h1></header><div class="image-frame"><img src="image16.jpg"></div><div class="analysis-square">El Yo-Mercancía: Construimos nuestra personalidad como un producto atractivo para el mercado social.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">16</span></div>
-
-    <div class="page"><header><h1>Fragmento 17</h1></header><div class="image-frame"><img src="image17.jpg"></div><div class="analysis-square">Psicogeografía Crítica: El estudio de los efectos del medio ambiente geográfico en las emociones.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">17</span></div>
-
-    <div class="page"><header><h1>Fragmento 18</h1></header><div class="image-frame"><img src="image18.jpg"></div><div class="analysis-square">La Rebelión del Paso: Cada paso fuera de la ruta establecida es una neurona que despierta del letargo.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">18</span></div>
-
-    <div class="page"><header><h1>Fragmento 19</h1></header><div class="image-frame"><img src="image19.jpg"></div><div class="analysis-square">Mediación Total: El espectáculo se ha vuelto invisible por su omnipresencia en nuestra forma de mirar.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">19</span></div>
+    <div class="page"><header><h1>Fragmento 01</h1></header><div class="image-frame"><img src="image1.jpg"></div><div class="analysis-square">La ciudad moderna funciona como un mecanismo de aislamiento...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">01</span></div>
+    <div class="page"><header><h1>Fragmento 02</h1></header><div class="image-frame"><img src="image2.jpg"></div><div class="analysis-square">El objeto ya no satisface una necesidad real...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">02</span></div>
+    <div class="page"><header><h1>Fragmento 03</h1></header><div class="image-frame"><img src="image3.jpg"></div><div class="analysis-square">Las calles están diseñadas para la circulación fluida de mercancías...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">03</span></div>
+    <div class="page"><header><h1>Fragmento 04</h1></header><div class="image-frame"><img src="image4.jpg"></div><div class="analysis-square">El espectáculo coloniza nuestro descanso...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">04</span></div>
+    <div class="page"><header><h1>Fragmento 05</h1></header><div class="image-frame"><img src="image5.jpg"></div><div class="analysis-square">Bajo la luz cegadora del espectáculo...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">05</span></div>
+    <div class="page"><header><h1>Fragmento 06</h1></header><div class="image-frame"><img src="image6.jpg"></div><div class="analysis-square">La ciudad nos vigila a través de su propia estética...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">06</span></div>
+    <div class="page"><header><h1>Fragmento 07</h1></header><div class="image-frame"><img src="image7.jpg"></div><div class="analysis-square">Détournement: La reutilización de elementos del sistema...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">07</span></div>
+    <div class="page"><header><h1>Fragmento 08</h1></header><div class="image-frame"><img src="image8.jpg"></div><div class="analysis-square">El espectáculo une a los hombres solo en su separación...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">08</span></div>
+    <div class="page"><header><h1>Fragmento 09</h1></header><div class="image-frame"><img src="image9.jpg"></div><div class="analysis-square">Dictadura Visual: Lo que aparece es bueno; lo que es bueno aparece.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">09</span></div>
+    <div class="page"><header><h1>Fragmento 10</h1></header><div class="image-frame"><img src="image10.jpg"></div><div class="analysis-square">Nostalgia Fabricada: El sistema nos vende un pasado simplificado...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">10</span></div>
+    <div class="page"><header><h1>Fragmento 11</h1></header><div class="image-frame"><img src="image11.jpg"></div><div class="analysis-square">Grietas en el Muro: La deriva busca los espacios residuales...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">11</span></div>
+    <div class="page"><header><h1>Fragmento 12</h1></header><div class="image-frame"><img src="image12.jpg"></div><div class="analysis-square">Turismo Existencial: Viajar para ver lo que ya hemos consumido...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">12</span></div>
+    <div class="page"><header><h1>Fragmento 13</h1></header><div class="image-frame"><img src="image13.jpg"></div><div class="analysis-square">Resistencia al Ruido: El silencio y la imagen vacía son rebelión.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">13</span></div>
+    <div class="page"><header><h1>Fragmento 14</h1></header><div class="image-frame"><img src="image14.jpg"></div><div class="analysis-square">Deseos Implantados: El espectáculo nos enseña a querer...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">14</span></div>
+    <div class="page"><header><h1>Fragmento 15</h1></header><div class="image-frame"><img src="image15.jpg"></div><div class="analysis-square">Ritmo Mecánico: El reloj del espectáculo anula la subjetividad...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">15</span></div>
+    <div class="page"><header><h1>Fragmento 16</h1></header><div class="image-frame"><img src="image16.jpg"></div><div class="analysis-square">El Yo-Mercancía: Construimos nuestra personalidad como producto.</div><footer><span>Sociedad Errante</span></footer><span class="page-number">16</span></div>
+    <div class="page"><header><h1>Fragmento 17</h1></header><div class="image-frame"><img src="image17.jpg"></div><div class="analysis-square">Psicogeografía Crítica: El estudio de los efectos geográficos...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">17</span></div>
+    <div class="page"><header><h1>Fragmento 18</h1></header><div class="image-frame"><img src="image18.jpg"></div><div class="analysis-square">La Rebelión del Paso: Cada paso fuera de la ruta establecida...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">18</span></div>
+    <div class="page"><header><h1>Fragmento 19</h1></header><div class="image-frame"><img src="image19.jpg"></div><div class="analysis-square">Mediación Total: El espectáculo se ha vuelto invisible...</div><footer><span>Sociedad Errante</span></footer><span class="page-number">19</span></div>
 
     <div class="page">
         <header><h1>Fragmento 20</h1><small>Conclusión</small></header>
-        <div class="image-frame" style="height: 280px;"><img src="IMAGE20.jpg"></div>
+        <div class="image-frame" style="height: 280px;"><img src="image20.jpg"></div>
         <div class="analysis-square" style="margin-bottom: 20px;">
-            <strong>Fin de la Separación:</strong> El objetivo de la Sociedad Errante: volver a encontrarnos en la presencia real, sin imágenes y sin pantallas.
+            <strong>Fin de la Separación:</strong> El objetivo de la Sociedad Errante: volver a encontrarnos en la presencia real.
         </div>
         
         <div class="bio-section" style="border-top: 1px solid #eee; padding-top: 15px;">
             <h2 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px;">Biografía</h2>
             <div class="bio-content" style="font-size: 0.82rem; line-height: 1.5; text-align: justify; column-count: 2; column-gap: 25px;">
-                <p style="margin-top: 0;"><strong>Daniel Remeseiro (1950, A Coruña)</strong> es un artista visual cuya práctica se sitúa en la intersección entre la fotografía antropológica y la experimentación digital. A través de <strong>Sociedad Errante</strong>, cuestiona los regímenes de visibilidad contemporáneos y la construcción de la verdad en la era del algoritmo.</p>
-                <p style="margin-top: 0;">Su obra emplea el barrido manual como sismógrafo de una mirada que se resiste a la hiper-nitidez artificial, reivindicando la fragilidad como espacio de libertad. Propone una estética de la incertidumbre que obliga al espectador a reconstruir la imagen desde su subjetividad.</p>
+                <p style="margin-top: 0;"><strong>Daniel Remeseiro (1950, A Coruña)</strong> es un artista visual...</p>
+                <p style="margin-top: 0;">Su obra emplea el barrido manual como sismógrafo...</p>
             </div>
         </div>
 
-        <footer style="margin-top: auto; border-top: 1px solid var(--line-color); padding-top: 15px; font-size: 0.72rem; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 5px;">
-            <div style="flex: 1.2;">
-                <span style="color: var(--accent-color); font-weight: bold; text-transform: uppercase; font-size: 0.6rem; display: block; margin-bottom: 2px;">Especificaciones Técnicas</span>
-                SONY ILCE 6000 • 16-50 mm • Manual / Bulb
-            </div>
-
-            <div style="flex: 2; text-align: center; border-left: 1px solid #eee; border-right: 1px solid #eee; padding: 0 10px;">
-                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> &nbsp;•&nbsp; 
-                <a href="mailto:dremeseiro@gmail.com">Email</a> &nbsp;•&nbsp; 
+        <footer style="margin-top: auto; border-top: 1px solid var(--line-color); padding-top: 15px; font-size: 0.72rem; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="flex: 1.2;">SONY ILCE 6000 • 16-50 mm</div>
+            <div style="flex: 2; text-align: center;">
+                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> • 
+                <a href="mailto:dremeseiro@gmail.com">Email</a> • 
                 <a href="http://www.danielremeseiro.es" target="_blank">danielremeseiro.es</a>
             </div>
-
-            <div style="flex: 1.2; text-align: right; line-height: 1.4;">
-                <strong style="color: #000; font-size: 0.75rem;">© Daniel Remeseiro</strong><br>
-                <span style="letter-spacing: 1px; color: var(--subtle-gray); font-size: 0.65rem;">FEBRERO 2026</span>
-            </div>
+            <div style="flex: 1.2; text-align: right;"><strong>© Daniel Remeseiro</strong><br>2026</div>
         </footer>
         <span class="page-number">20</span>
     </div>
