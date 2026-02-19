@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUY DEBORD - PROYECTO BULD | Daniel Remeseiro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary-color: #000; 
+            --accent-color: #555; 
+            --bg-color: #ffffff; 
+            --line-color: #eeeeee; 
+            --overlay-bg: rgba(255, 255, 255, 0.98);
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+        body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Lato', sans-serif; color: #222; }
+
+        .page-container { width: 210mm; margin: 0 auto; }
+        .page {
+            width: 210mm; height: 297mm; background: var(--bg-color); padding: 20mm;
+            position: relative; display: flex; flex-direction: column;
+            page-break-after: always; overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05); margin-bottom: 20px;
+        }
+
+        header { border-bottom: 1px solid var(--line-color); margin-bottom: 25px; display: flex; justify-content: space-between; align-items: baseline; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0; text-transform: uppercase; letter-spacing: 4px; font-weight: 400; }
+        
+        .intro-full-text { column-count: 2; column-gap: 35px; text-align: justify; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; font-weight: 300; }
+
+        .image-frame { width: 100%; height: 500px; background-color: #fcfcfc; border: 1px solid #f0f0f0; overflow: hidden; margin-bottom: 20px; cursor: zoom-in; }
+        .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .analysis-square { 
+            border-left: 2px solid var(--accent-color); padding: 10px 25px; 
+            font-family: 'Playfair Display', serif; font-size: 1.1rem; 
+            font-style: italic; background: #fafafa; color: #333; line-height: 1.5;
+        }
+
+        /* PIE DE PÁGINA Y NUMERACIÓN DISCRETA */
+        footer { margin-top: auto; padding-top: 15px; border-top: 0.5px solid var(--line-color); height: 20px; position: relative; }
+        .page-number { 
+            position: absolute; 
+            bottom: 10mm; 
+            right: 15mm; 
+            font-size: 0.7rem; 
+            color: #bbb; 
+            font-family: 'Lato', sans-serif; 
+            letter-spacing: 3px; 
+            font-weight: 400;
+        }
+
+        .bio-section { border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px; }
+        .bio-content { font-size: 0.8rem; line-height: 1.6; text-align: justify; column-count: 2; column-gap: 25px; font-weight: 300; }
+
+        .master-footer {
+            margin-top: auto; border-top: 1px solid var(--line-color); padding-top: 15px;
+            font-size: 0.7rem; display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .footer-links a { color: var(--accent-color); text-decoration: none; font-weight: bold; margin: 0 5px; }
+
+        #visor-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay-bg); z-index: 1000; flex-direction: column; justify-content: center; align-items: center;
+        }
+        #visor-img { max-height: 70vh; width: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .nav-btn { background: none; border: none; font-size: 3rem; color: #ccc; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); }
+        .close-btn { position: absolute; top: 40px; right: 40px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; letter-spacing: 2px; font-size: 0.65rem; }
+
+        @media print { #print-btn, .nav-btn, .close-btn { display: none !important; } .page { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+
+<div class="page-container" id="main-doc"></div>
+
+<button id="print-btn" style="display:block; margin: 40px auto; padding: 15px 30px; background:#000; color:#fff; border:none; cursor:pointer; letter-spacing:2px; font-size:0.7rem;" onclick="window.print()">GENERAR PDF MAESTRO</button>
+
+<div id="visor-overlay">
+    <button class="close-btn" onclick="closeVisor()">CERRAR</button>
+    <button class="nav-btn prev" style="left:30px" onclick="changeImg(-1)">&#10094;</button>
+    <div style="text-align:center;">
+        <div id="visor-title" style="font-family:'Playfair Display'; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;"></div>
+        <img id="visor-img" src="">
+    </div>
+    <button class="nav-btn next" style="right:30px" onclick="changeImg(1)">&#10095;</button>
+</div>
+
+<script>
+    const data = [
+        { t: "Sociedad Errante", x: "Guy Debord nos advierte que el espectáculo no es solo un conjunto de imágenes, sino una estructura social que nos separa de la vida real." },
+        { t: "Fragmento 01", x: "La ciudad moderna funciona como un mecanismo de aislamiento. El individuo se disuelve en el flujo del espectáculo urbano." },
+        { t: "Fragmento 02", x: "El objeto ya no satisface una necesidad real, sino que proyecta un estatus simbólico." },
+        { t: "Fragmento 03", x: "Las calles están diseñadas para la circulación fluida de mercancías, no para el encuentro humano." },
+        { t: "Fragmento 04", x: "El espectáculo coloniza nuestro descanso, convirtiendo el tiempo libre en otra forma de consumo pasivo." },
+        { t: "Fragmento 05", x: "Bajo la luz cegadora del espectáculo, la identidad real se borra para dar paso a la máscara social." },
+        { t: "Fragmento 06", x: "La ciudad nos vigila a través de su propia estética, dictando lo que es aceptable, bello y útil." },
+        { t: "Fragmento 07", x: "La reutilización de elementos del sistema para crear un nuevo significado subversivo." },
+        { t: "Fragmento 08", x: "El espectáculo une a los hombres solo en su separación, manteniéndolos aislados frente a la misma representación." },
+        { t: "Fragmento 09", x: "Lo que aparece es bueno; lo que es bueno aparece. La imagen es la única realidad válida." },
+        { t: "Fragmento 10", x: "El sistema nos vende un pasado simplificado para evitar comprender el tiempo histórico real." },
+        { t: "Fragmento 11", x: "La deriva busca los espacios residuales donde la vida todavía puede respirar sin un guion." },
+        { t: "Fragmento 12", x: "Viajar para ver lo que ya hemos consumido en pantallas. La validación de un catálogo previo." },
+        { t: "Fragmento 13", x: "En un mundo saturado, el silencio y la imagen vacía son los únicos actos de rebelión posibles." },
+        { t: "Fragmento 14", x: "El espectáculo nos enseña a querer aquello que el sistema necesita que consumamos." },
+        { t: "Fragmento 15", x: "El reloj del espectáculo anula la subjetividad y los ritmos biológicos de la errancia humana." },
+        { t: "Fragmento 16", x: "Construimos nuestra personalidad como un producto atractivo para el mercado social." },
+        { t: "Fragmento 17", x: "El estudio de los efectos del medio ambiente geográfico en las emociones." },
+        { t: "Fragmento 18", x: "Cada paso fuera de la ruta establecida es una neurona que despierta del letargo." },
+        { t: "Fragmento 19", x: "El espectáculo se ha vuelto invisible por su omnipresencia en nuestra forma de mirar." },
+        { t: "Fragmento 20", x: "Fin de la Separación: volver a encontrarnos en la presencia real, sin imágenes y sin pantallas." }
+    ];
+
+    const container = document.getElementById('main-doc');
+    
+    data.forEach((item, i) => {
+        const page = document.createElement('div');
+        page.className = 'page';
+        const imgName = i === 0 ? "portada.jpg" : `image${i}.jpg`;
+        
+        let contentHTML = `<header><h1>${item.t}</h1><small>Dossier Guy Debord • 2026</small></header>`;
+
+        if (i === 0) {
+            contentHTML += `
+                <div class="intro-full-text">
+                    <p><strong>El Espectáculo como Dictadura Visual:</strong> Guy Debord nos advierte que el espectáculo no es solo un conjunto de imágenes, sino una estructura social que nos separa de la vida real. Hemos pasado del "ser" al "parecer", donde la mediación técnica sustituye la experiencia humana auténtica.</p>
+                    <p><strong>La Ciudad y la Alienación:</strong> El urbanismo está diseñado para dirigir nuestros deseos hacia el consumo. La Sociedad Errante propone romper estos raíles mediante la deriva psicogeográfica.</p>
+                </div>
+                <div class="image-frame" style="height: 380px;" onclick="openVisor(${i})"><img src="${imgName}"></div>
+            `;
+        } else {
+            contentHTML += `<div class="image-frame" ${i === 20 ? 'style="height:280px"' : ''} onclick="openVisor(${i})"><img src="${imgName}"></div>`;
+        }
+
+        contentHTML += `<div class="analysis-square">${item.x}</div>`;
+
+        if (i === 20) {
+            contentHTML += `
+                <div class="bio-section">
+                    <h2 style="font-family:'Playfair Display'; font-size:1.1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px;">Daniel Remeseiro</h2>
+                    <div class="bio-content">
+                        <p>Artista visual (A Coruña, 1950) cuya práctica se sitúa en la intersección entre la fotografía antropológica y la experimentación digital. A través de Sociedad Errante, cuestiona los regímenes de visibilidad contemporáneos.</p>
+                        <p>Su obra emplea el barrido manual como sismógrafo de una mirada que se resiste a la hiper-nitidez artificial.</p>
+                    </div>
+                </div>
+                <div class="master-footer">
+                    <div style="flex:1;"><span style="color:var(--accent-color); font-weight:bold; text-transform:uppercase; font-size:0.6rem; display:block;">Especificaciones Técnicas</span>SONY ILCE 6000 • 16-50 mm • Manual / Bulb</div>
+                    <div class="footer-links" style="flex:1; text-align:center;"><a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> • <a href="mailto:dremeseiro@gmail.com">Email</a> • <a href="http://www.danielremeseiro.es" target="_blank">danielremeseiro.es</a></div>
+                    <div style="flex:1; text-align:right;"><strong>© Daniel Remeseiro</strong><br><span style="letter-spacing:1px; color:#999; font-size:0.65rem;">FEBRERO 2026</span></div>
+                </div>
+            `;
+        } else {
+            contentHTML += `<footer></footer>`;
+        }
+
+        // NUMERACIÓN DISCRETA MARGEN INFERIOR DERECHO
+        contentHTML += `<span class="page-number">${i.toString().padStart(2, '0')}</span>`;
+        
+        page.innerHTML = contentHTML;
+        container.appendChild(page);
+    });
+
+    // Lógica del Visor
+    let currentIdx = 0;
+    function openVisor(i) { currentIdx = i; updateVisor(); document.getElementById('visor-overlay').style.display = 'flex'; }
+    function closeVisor() { document.getElementById('visor-overlay').style.display = 'none'; }
+    function changeImg(s) { currentIdx = (currentIdx + s + data.length) % data.length; updateVisor(); }
+    function updateVisor() {
+        const item = data[currentIdx];
+        document.getElementById('visor-img').src = currentIdx === 0 ? "portada.jpg" : `image${currentIdx}.jpg`;
+        document.getElementById('visor-title').innerText = item.t;
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") closeVisor();
+        if (e.key === "ArrowLeft") changeImg(-1);
+        if (e.key === "ArrowRight") changeImg(1);
+    });
+</script>
+</body>
+</html>
